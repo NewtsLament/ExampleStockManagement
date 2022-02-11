@@ -31,6 +31,7 @@ namespace ExampleStockManagement.Model
         {
             this.itemId = itemId;
             this.description = description;
+            this.orders = new List<Order>();
         }
 
     }
