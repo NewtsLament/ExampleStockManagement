@@ -13,6 +13,9 @@ namespace ExampleStockManagement.Model
             get { return name; }
             set { name = value; }
         }
-
+        public Warehouse(string name)
+        {
+            this.name = Name;
+        }
     }
 }

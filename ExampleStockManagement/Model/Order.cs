@@ -33,5 +33,15 @@ namespace ExampleStockManagement.Model
             this.location = location;
             this.items = new List<Item>();
         }
+        public override string ToString()
+        {
+            string stringItems = "";
+            foreach (Item item in Items)
+            {
+                stringItems += item.ItemId + ";";
+            }
+            stringItems = stringItems.Substring(0, stringItems.Length - 1);
+            return string.Format("{0};{1};"+stringItems,orderId,location);
+        }
     }
 }

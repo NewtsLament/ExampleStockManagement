@@ -33,6 +33,9 @@ namespace ExampleStockManagement.Model
             this.description = description;
             this.orders = new List<Order>();
         }
-
+        public override string ToString()
+        {
+            return string.Format("{0};{1}",itemId,description);
+        }
     }
 }

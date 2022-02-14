@@ -34,5 +34,10 @@ namespace ExampleStockManagement.Model
             this.countsItem = countsItem;
             this.itemIsIn = itemIsIn;
         }
+
+        public override string ToString()
+        {
+            return string.Format("{0};{1};{2}",quantity,countsItem.ItemId,itemIsIn.Name);
+        }
     }
 }
