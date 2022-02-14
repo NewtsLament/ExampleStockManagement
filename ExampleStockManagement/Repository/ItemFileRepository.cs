@@ -11,9 +11,15 @@ namespace ExampleStockManagement.Repository
         private uint itemIdMax = 0;
         private string fileName;
         private List<Item> items;
+        public List<Item> Items
+        {
+            get { return items; }
+        }
+
         public ItemFileRepository(string fileName)
         {
             this.fileName = fileName;
+            items = new List<Item>();
             Read();
         }
         public Item Create(string description)

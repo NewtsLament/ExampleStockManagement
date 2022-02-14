@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExampleStockManagement"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="200" Width="400">
     <Grid>
-
+        <Button x:Name="ItemsBtn" Content="Items" HorizontalAlignment="Left" Margin="82,68,0,0" VerticalAlignment="Top" Height="40" Width="80" Click="ItemsBtn_Click"/>
+        <Button x:Name="StockBtn" Content="Stock" HorizontalAlignment="Left" Margin="237,68,0,0" VerticalAlignment="Top" Height="40" Width="80" Click="StockBtn_Click"/>
     </Grid>
 </Window>
