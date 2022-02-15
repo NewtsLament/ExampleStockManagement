@@ -1,0 +1,57 @@
+﻿<Window x:Class="ExampleStockManagement.StockManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExampleStockManagement"
+        xmlns:viewModels="clr-namespace:ExampleStockManagement.ViewModel"
+        mc:Ignorable="d"
+        Title="StockManagementWindow" Height="450" Width="1600">
+    <Window.DataContext>
+        <viewModels:StockManagementViewModel x:Name="stockManagementDatacontext"/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="WarehouseListBox" Grid.Column="1" ItemsSource="{Binding Warehouses}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="5,0,30,0"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox x:Name="StockUnitListBox" Grid.Column="3" ItemsSource="{Binding StockUnits}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="5,0,30,0"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock Text="{Binding CountsItem.Description}"/>
+                        <TextBlock Text="{Binding Quantity}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="AddWarehouseBtn" Content="Add" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="UpdateWarehouseBtn" Content="Update" HorizontalAlignment="Center" Margin="0,54,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="DeleteWarehouseBtn" Content="Delete" HorizontalAlignment="Center" Margin="0,79,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="AddStockUnitBtn" Content="Add" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2"/>
+        <Button x:Name="UpdateStockUnitBtn" Content="Update" HorizontalAlignment="Center" Margin="0,54,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2"/>
+        <Button x:Name="DeleteStockUnitBtn" Content="Delete" HorizontalAlignment="Center" Margin="0,79,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2"/>
+
+    </Grid>
+</Window>

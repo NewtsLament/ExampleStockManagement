@@ -16,6 +16,13 @@ namespace ExampleStockManagement.Repository
             set { fileName = value; }
         }
         private List<Warehouse> wareHouses;
+
+        public List<Warehouse> Warehouses
+        {
+            get { return wareHouses; }
+            set { wareHouses = value; }
+        }
+
         public WarehouseFileRepository(string fileName)
         {
             this.fileName = fileName;

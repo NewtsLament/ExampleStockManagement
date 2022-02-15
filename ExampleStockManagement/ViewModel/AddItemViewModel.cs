@@ -7,7 +7,6 @@ namespace ExampleStockManagement.ViewModel
     class AddItemViewModel : ObservableObject
     {
         private string description;
-
         public string Description
         {
             get { return description; }

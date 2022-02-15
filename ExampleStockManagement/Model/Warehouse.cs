@@ -15,7 +15,7 @@ namespace ExampleStockManagement.Model
         }
         public Warehouse(string name)
         {
-            this.name = Name;
+            this.name = name;
         }
     }
 }

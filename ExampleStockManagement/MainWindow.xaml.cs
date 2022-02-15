@@ -33,7 +33,8 @@ namespace ExampleStockManagement
 
         private void StockBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Window stockManagementWindow = new StockManagementWindow();
+            stockManagementWindow.Show();
         }
     }
 }
