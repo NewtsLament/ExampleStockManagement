@@ -5,6 +5,7 @@ using ExampleStockManagement.Repository;
 using ExampleStockManagement.Model;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using ExampleStockManagement.AbstractClasses;
 
 namespace ExampleStockManagement.ViewModel
 {
@@ -23,12 +24,18 @@ namespace ExampleStockManagement.ViewModel
         public ItemsViewModel()
         {
             repository = new CoreRepository("test");
-            items = new ObservableCollection<Item>(repository.ItemRepository.Items);
+            items = new ObservableCollection<Item>();
+            foreach (var item in repository.ItemRepository.ReadAll())
+            {
+                items.Add(item as Item);
+            }
         }
 
         public void CreateItem(string description)
         {
-            items.Add(repository.ItemRepository.Create(description));
+            Item tempItem = new Item(description);
+            repository.ItemRepository.Create(tempItem);
+            items.Add(tempItem);
         }
     }
 }

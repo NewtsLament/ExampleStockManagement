@@ -33,10 +33,10 @@ namespace ExampleStockManagement.Repository
         public CoreRepository(string fileName)
         {
             this.fileName = fileName;
-            warehouseFileRepository = new WarehouseFileRepository(fileName + "_warehouse.txt");
-            itemFileRepository = new ItemFileRepository(fileName + "_item.txt");
-            orderFileRepository = new OrderFileRepository(fileName + "_order.txt",warehouseFileRepository,itemFileRepository);
-            stockUnitFileRepository = new StockUnitFileRepository(fileName + "_stockUnit.txt",itemFileRepository,warehouseFileRepository);
+            warehouseFileRepository = new WarehouseFileRepository();
+            itemFileRepository = new ItemFileRepository();
+            orderFileRepository = new OrderFileRepository();
+            stockUnitFileRepository = new StockUnitFileRepository();
         }
     }
 }

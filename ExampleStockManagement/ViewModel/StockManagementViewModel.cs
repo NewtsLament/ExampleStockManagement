@@ -4,6 +4,7 @@ using System.Text;
 using ExampleStockManagement.Repository;
 using ExampleStockManagement.Model;
 using System.Collections.ObjectModel;
+using ExampleStockManagement.Interfaces;
 
 namespace ExampleStockManagement.ViewModel
 {
@@ -26,17 +27,27 @@ namespace ExampleStockManagement.ViewModel
             set { stockUnits = value; }
         }
 
-
         public StockManagementViewModel()
         {
             coreRepository = new CoreRepository("test");
-            warehouses = new ObservableCollection<Warehouse>(coreRepository.WarehouseRepository.Warehouses);
-            stockUnits = new ObservableCollection<StockUnit>(coreRepository.StockUnitRepository.StockUnits);
+
+            warehouses = new ObservableCollection<Warehouse>();
+            foreach (var item in coreRepository.WarehouseRepository.ReadAll())
+            {
+                warehouses.Add(item as Warehouse);
+            }
+            stockUnits = new ObservableCollection<StockUnit>();
+            foreach (var item in coreRepository.StockUnitRepository.ReadAll())
+            {
+                stockUnits.Add(item as StockUnit);
+            }
         }
 
         public void CreateItem(string name)
         {
-            warehouses.Add(coreRepository.WarehouseRepository.Create(name));
+            Warehouse tempWarehouse = new Warehouse(name);
+            coreRepository.WarehouseRepository.Create(tempWarehouse);
+            warehouses.Add(tempWarehouse);
         }
     }
 }

@@ -1,18 +1,22 @@
-﻿using System;
+﻿using ExampleStockManagement.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ExampleStockManagement.Model
 {
-    class Warehouse
+    class Warehouse:IIdentifiable
     {
         private string name;
 
         public string Name
         {
             get { return name; }
-            set { name = value; }
+        
         }
+
+        public object Id => name;
+
         public Warehouse(string name)
         {
             this.name = name;

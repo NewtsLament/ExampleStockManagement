@@ -1,11 +1,13 @@
-﻿using System;
+﻿using ExampleStockManagement.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ExampleStockManagement.Model
 {
-    class Order
+    class Order:IIdentifiable
     {
+        private static uint count = 0;
         private uint orderId;
 
         public uint OrderId
@@ -27,7 +29,10 @@ namespace ExampleStockManagement.Model
             set { location = value; }
         }
 
-        public Order(uint orderId, Warehouse location)
+        public object Id => orderId;
+
+        public Order(Warehouse location) : this(location, count++) { }
+        public Order(Warehouse location, uint orderId)
         {
             this.orderId = orderId;
             this.location = location;

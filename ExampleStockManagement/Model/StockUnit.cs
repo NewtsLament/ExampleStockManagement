@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ExampleStockManagement.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ExampleStockManagement.Model
 {
-    class StockUnit
+    class StockUnit:IIdentifiable
     {
         private uint quantity;
 
@@ -27,6 +28,11 @@ namespace ExampleStockManagement.Model
             set { itemIsIn = value; }
         }
 
+        public object Id {
+            get {
+                return Tuple.Create(CountsItem.ItemId, itemIsIn.Name.GetHashCode()).GetHashCode();
+            }
+        }
 
         public StockUnit(uint quantity,Item countsItem, Warehouse itemIsIn)
         {
