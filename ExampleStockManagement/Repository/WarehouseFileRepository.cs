@@ -14,5 +14,16 @@ namespace ExampleStockManagement.Repository
         {
             // Not applicable.
         }
+        public override void Create(IIdentifiable entity)
+        {
+            if (storage.Find(x => (x.Id as string) == (entity.Id as string)) == null)
+            {
+                storage.Add(entity);
+            }
+        }
+        public override IIdentifiable Read(object id)
+        {
+            return storage.Find(x => (x.Id as string) == (id as string));
+        }
     }
 }

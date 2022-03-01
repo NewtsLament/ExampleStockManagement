@@ -31,5 +31,19 @@ namespace ExampleStockManagement
                 itemsDataContext.CreateItem(addItemWindow.addItemViewModel.Description);
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            itemsDataContext.DeleteItem();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddItemWindow addItemWindow = new AddItemWindow();
+            if (addItemWindow.ShowDialog().Value)
+            {
+                itemsDataContext.UpdateItem(addItemWindow.addItemViewModel.Description);
+            }
+        }
     }
 }

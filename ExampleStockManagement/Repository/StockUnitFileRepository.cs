@@ -17,5 +17,16 @@ namespace ExampleStockManagement.Repository
             oldData.ItemIsIn = newData.ItemIsIn;
             oldData.Quantity = newData.Quantity;
         }
+        public override void Create(IIdentifiable entity)
+        {
+            if (storage.Find(x => (int)x.Id == (int)entity.Id) == null)
+            {
+                storage.Add(entity);
+            }
+        }
+        public override IIdentifiable Read(object id)
+        {
+            return storage.Find(x => (int)x.Id == (int)id);
+        }
     }
 }

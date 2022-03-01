@@ -16,5 +16,16 @@ namespace ExampleStockManagement.Repository
             Order newData = entity as Order;
             oldData.Location = newData.Location;
         }
+        public override void Create(IIdentifiable entity)
+        {
+            if (storage.Find(x => (uint)x.Id == (uint)entity.Id) == null)
+            {
+                storage.Add(entity);
+            }
+        }
+        public override IIdentifiable Read(object id)
+        {
+            return storage.Find(x => (uint)x.Id == (uint)id);
+        }
     }
 }

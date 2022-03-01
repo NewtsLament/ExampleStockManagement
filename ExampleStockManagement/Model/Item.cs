@@ -1,11 +1,12 @@
 ﻿using ExampleStockManagement.Interfaces;
+using ExampleStockManagement.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ExampleStockManagement.Model
 {
-    class Item:IIdentifiable
+    class Item:ObservableObject,IIdentifiable
     {
         private static uint count = 0;
         private uint itemId;
@@ -19,7 +20,9 @@ namespace ExampleStockManagement.Model
         public string Description
         {
             get { return description; }
-            set { description = value; }
+            set {
+                OnPropertyChanged(nameof(Description));
+                description = value; }
         }
         private List<Order> orders;
 

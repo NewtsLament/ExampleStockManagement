@@ -10,9 +10,9 @@ namespace ExampleStockManagement.AbstractClasses
     {
         protected static List<IIdentifiable> storage = new List<IIdentifiable>();
 
-        public void Create(IIdentifiable entity)
+        public virtual void Create(IIdentifiable entity)
         {
-            if(storage.Find(x=>x.Id==entity.Id)==null)
+            if (storage.Find(x => x.Id == entity.Id) == null)
             {
                 storage.Add(entity);
             }
@@ -23,7 +23,7 @@ namespace ExampleStockManagement.AbstractClasses
             storage.Remove(entity);
         }
 
-        public IIdentifiable Read(object id)
+        public virtual IIdentifiable Read(object id)
         {
             return storage.Find(x => x.Id == id);
         }
@@ -33,6 +33,6 @@ namespace ExampleStockManagement.AbstractClasses
             return storage;
         }
 
-        abstract public void Update(IIdentifiable entity);
+        public abstract void Update(IIdentifiable entity);
     }
 }
